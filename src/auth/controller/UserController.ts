@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from 'express';
-import { registerUser } from '../service/UserService';
+import { registerUser } from '../managers/UserManager';
 import status from 'http-status'
 
 export const registerUserController = async (req: Request, res: Response, next: NextFunction) => {
