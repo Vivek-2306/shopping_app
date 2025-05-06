@@ -1,0 +1,46 @@
+{
+  "name": "shopping_app",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Vivek-2306/shopping_app#readme",
+  "bugs": {
+    "url": "https://github.com/Vivek-2306/shopping_app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vivek-2306/shopping_app.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "http-status": "^2.1.0",
+    "mongoose": "^8.14.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/express": "^5.0.1",
+    "@types/express-session": "^1.18.1",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^22.15.14"
+  }
+}
