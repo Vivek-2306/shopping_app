@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import {v4 as uuidv4} from 'uuid';
 import {rateLimit} from 'express-rate-limit';
-import { connectDB } from './config/db';
+import DBConfig from './config/db';
 
 const app = express();
 dotenv.config();
@@ -36,6 +36,6 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.listen(PORT, async() => {
-    await connectDB(); // Connect to MongoDB
+    await DBConfig.getConnection() // Connect to MongoDB
     console.log(`Server is running on port ${PORT}`);
 });

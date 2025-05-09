@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import UserDao from "../auth/UserDao";
 import status from "http-status";
+import { verifyToken } from "../utils/TokenGenerator";
 
 const userDao = new UserDao();
 
@@ -12,6 +13,10 @@ export const authentication = async(req: Request, res: Response, next: NextFunct
     const password = user.password as string;
 
     // validate token
+    const is_token_verify = verifyToken(token)
+    if (!is_token_verify) {
+        return res.status(status.UNAUTHORIZED).json({ message: "Invalid token. Please check again." });
+    }
 
     // validate password
     const isValidPassword = await user.comparePassword(password);
