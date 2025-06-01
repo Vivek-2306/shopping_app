@@ -1,4 +1,3 @@
-import { UUID } from "crypto";
 
 export interface CreateUserType {
     email: string;
@@ -8,22 +7,23 @@ export interface CreateUserType {
 }
 
 export interface UpdateUserType {
-    id: UUID;
+    id: string;
     email: string;
     firstName: string;
     lastName: string;
 }
 
 export interface UserResponseType {
-    token?: string;
+    access_token?: string;
+    refresh_token?: string;
     user: {
-        id: UUID;
+        id: string;
         name: string;
         firstName: string;
         lastName: string;
         email: string;
-        isVerified: boolean;
-        isActive: boolean;
+        is_verified: boolean;
+        is_active: boolean;
         created_by?: string;
         updated_by?: string;
         created_at: Date;

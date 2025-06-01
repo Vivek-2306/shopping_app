@@ -5,7 +5,7 @@ const dbInit = async () => {
         await sequelize.authenticate();
         console.log("Database connection has been established successfully.");
         if (process.env.NODE_ENV === "development") {
-            await sequelize.sync({ alter: true });
+            // await sequelize.sync({ alter: true });
             console.log("Database synchronized successfully.");
         }
 

@@ -2,23 +2,20 @@ import jwt from 'jsonwebtoken';
 import { EnvConfig } from '../config/env-config';
 
 interface TokenPayload {
-    userId: string;
     email: string;
     [key: string]: any;
 }
 
 export class JWTService {
-    private static readonly SECRET_KEY: string = EnvConfig.JWT_SECRET_KEY;
-    private static readonly EXPIRES_IN: string = EnvConfig.JWT_EXPIRES_IN as string;
 
-    static generateToken(payload: TokenPayload): string {
-        return jwt.sign(payload, this.SECRET_KEY, {
-            expiresIn: '1h'
+    static generateToken(payload: TokenPayload, secret_key: string, expires_in: any): string {
+        return jwt.sign(payload, secret_key, {
+            expiresIn: expires_in,
         });
     }
 
-    static verifyToken(token: string): TokenPayload {
-        return jwt.verify(token, this.SECRET_KEY) as TokenPayload;
+    static verifyToken(token: string, secret_key: string): TokenPayload {
+        return jwt.verify(token, secret_key) as TokenPayload;
     }
 
     static decodeToken(token: string): TokenPayload | null {

@@ -8,10 +8,10 @@ export class UserService {
         return await User.create({
             ...userData,
             name: `${userData?.firstName} ${userData?.lastName}`,
-            isVerified: false,
-            isActive: true,
-            createdBy: userData?.email,
-            updatedBy: userData?.email
+            is_verified: false,
+            is_active: true,
+            created_by: userData?.email,
+            updated_by: userData?.email
         });
     }
 
@@ -40,7 +40,7 @@ export class UserService {
         user.firstName = userData.firstName;
         user.lastName = userData.lastName;
         user.name = `${userData.firstName} ${userData.lastName}`;
-        user.updatedBy = userData.email;
+        user.updated_by = userData.email;
 
         await user.save();
         return user;
@@ -52,6 +52,11 @@ export class UserService {
             throw new NotFoundError("User not found");
         }
         await user.destroy();
+    }
+
+    static async hashPassword(password: string): Promise<string> {
+        const saltRounds = 12;
+        return await hash(password, saltRounds);
     }
 
     static async verifyPassword(user: User, password: string): Promise<boolean> {
